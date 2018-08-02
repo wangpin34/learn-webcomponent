@@ -1,4 +1,4 @@
-# webcomponent 教程
+# webcomponent 学习笔记
 ## 什么是 webcomponent
 html 提供了很多各式各样的标签，用于展示内容(div, p, h1 - h7, span)，提供必要的交互动作(button, checkbox)。但 web app 是丰富多彩各不相同的，既有标签根本不能满足需要。富有创造力的 web 开发者们依靠 html/css/js 技术，发明了海量的美轮美奂的 web 组件，在此之上构建了无数兼具美感和功能性的应用。遗憾的是，一直以来，没有标准的 web 技术来定制化 web 标签，直到 webcomponent。 webcomponent 是专用于定制 web 元素的技术，包含定制 html 元素，shadow dom，html imports 等核心概念。
 
