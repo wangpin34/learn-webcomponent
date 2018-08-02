@@ -12,18 +12,20 @@
 <!--HTML5 charset def-->
 <meta charset="UTF-8">
 <link rel="icon" href="/assets/icon.ico" type="image/x-icon">
-<title>Customized built in Element</title>
+<title>Shadow Dom</title>
 <style>
  body {
   margin: 0; /* Remove default margin */
  }
 </style>
-<script type="text/javascript" src="/js/customized-built-in-element.js"></script>
-<script type="text/javascript">
-  customElements.define("plastic-button", PlasticButton, { extends: "button" });
-</script>
 </head>
 <body>
-  <button is="plastic-button">Click Me!</button>
+  
 </body>
+<script type="text/javascript">
+  const header = document.createElement('header');
+  const shadowRoot = header.attachShadow({mode: 'open'});
+  shadowRoot.innerHTML = '<h1>Hello Shadow DOM</h1>'; // Could also use appendChild().
+  document.body.appendChild(header);
+</script>
 </html>
