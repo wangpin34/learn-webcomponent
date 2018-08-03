@@ -1,9 +1,11 @@
 # webcomponent 学习笔记
 ## 什么是 webcomponent
-html 提供了很多各式各样的标签，用于展示内容(div, p, h1 - h7, span)，提供必要的交互动作(button, checkbox)。但 web app 是丰富多彩各不相同的，既有标签根本不能满足需要。富有创造力的 web 开发者们依靠 html/css/js 技术，发明了海量的美轮美奂的 web 组件，在此之上构建了无数兼具美感和功能性的应用。遗憾的是，一直以来，没有标准的 web 技术来定制化 web 标签，直到 webcomponent。 webcomponent 是专用于定制 web 元素的技术，包含[定制 html 元素](http://w3c.github.io/webcomponents/spec/custom/)，shadow dom，html imports 等核心概念。
+html 提供了很多各式各样的标签，用于展示内容(div, p, h1 - h7, span)，提供必要的交互动作(button, checkbox)。但 web app 是丰富多彩各不相同的，既有标签根本不能满足需要。富有创造力的 web 开发者们依靠 html/css/js 技术，发明了海量的美轮美奂的 web 组件，在此之上构建了无数兼具美感和功能性的应用。遗憾的是，一直以来，没有标准的 web 技术来定制化 web 标签，直到 webcomponent。 webcomponent 是专用于定制 web 元素的技术，包含[定制 html 元素](http://w3c.github.io/webcomponents/spec/custom/)，[shadow dom](https://w3c.github.io/webcomponents/spec/shadow/)，[html imports](https://w3c.github.io/webcomponents/spec/imports/) 等核心概念。
+
+**本篇中所有的例子，仅仅用于展示基本用法，并没有太多实际项目价值**。
 
 ## [定制 html 元素](http://w3c.github.io/webcomponents/spec/custom/)
-
+v1 版本的 API 可以使用 ES2015 的语法来定义新的 Element。需要注意的是几个钩子方法的使用。下面只是个简单的例子，关于这些方法的详细说明和例子，会另行说明。
 ### 纯定制化元素
 定义类 FlagIcon，继承 [HTMLElement](https://html.spec.whatwg.org/multipage/dom.html#htmlelement)
 ```javascript
@@ -56,7 +58,7 @@ customElements.define("flag-icon", FlagIcon);
 ```
 
 ### 扩展原生 html 元素
-扩展原生 button 元素，继承 [HTMLButtonElement](https://html.spec.whatwg.org/multipage/forms.html#htmlbuttonelement)
+很多时候并不需要从头定制，仅仅是扩展功能就可以了。比如下面这个例子，继承 [HTMLButtonElement](https://html.spec.whatwg.org/multipage/forms.html#htmlbuttonelement)
 ```javascript
 class PlasticButton extends HTMLButtonElement {
   constructor() {
@@ -83,7 +85,7 @@ customElements.define("plastic-button", PlasticButton, { extends: "button" });
 
 有，这就是 Shadow Dom。
 
-坦率的说，这个技术名词相当有水平：影子 Dom。所谓影子，它有形状，会变化，但没人能够改变影子（改变光源除外），除非本体。Shadow Dom 完全具备影子的首先：它的外观和功能来自于构造函数和外部输入。** 而且在运行期间，它的所有内容只受合法的输入值影响。**
+坦率的说，这个技术名词相当有水平：影子 Dom。所谓影子，它有形状，会变化，但没人能够改变影子（改变光源除外），除非本体。Shadow Dom 完全具备影子的首先：它的外观和功能来自于构造函数和外部输入。**而且在运行期间，它的所有内容只受合法的输入值影响**。
 
 ```javascript
 const header = document.createElement('header');
@@ -138,7 +140,7 @@ document.body.appendChild(header);
   shadow.appendChild(clone);
 ```
 ## 更多资料
-https://www.webcomponents.org/introduction
-https://www.html5rocks.com/en/tutorials/webcomponents/customelements
-https://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/
-[Can I use shadow dom](https://caniuse.com/#search=shadow)
+* https://www.webcomponents.org/introduction
+* https://www.html5rocks.com/en/tutorials/webcomponents/customelements
+* https://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/
+* [Can I use shadow dom](https://caniuse.com/#search=shadow)
