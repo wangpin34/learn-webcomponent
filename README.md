@@ -79,6 +79,12 @@ customElements.define("plastic-button", PlasticButton, { extends: "button" });
 ```
 
 ## Shadow Dom
+仅仅从浏览器加载的 DOM 树结果来看，自定义元素和web组件化技术（react，vuejs，angular）并无本质区别。后者所面临的困难，例如 css 互相影响，js非法修改组件内容，等等，前者也无法避免。那有没有一种技术，可以将每个元素或者组件所包含的 DOM 树完全隐藏起来，不为外界干扰呢？
+
+有，这就是 Shadow Dom。
+
+坦率的说，这个技术名词相当有水平：影子 Dom。所谓影子，它有形状，会变化，但没人能够改变影子（改变光源除外），除非本体。Shadow Dom 完全具备影子的首先：它的外观和功能来自于构造函数和外部输入。** 而且在运行期间，它的所有内容只受合法的输入值影响。**
+
 ```javascript
 const header = document.createElement('header');
 const shadowRoot = header.attachShadow({mode: 'open'});
@@ -86,5 +92,11 @@ shadowRoot.innerHTML = '<h1>Hello Shadow DOM</h1>'; // Could also use appendChil
 document.body.appendChild(header);
 ```
 
+## HTML template
+
+
 ## 更多资料
-https://www.webcomponents.org/introduction 
+https://www.webcomponents.org/introduction
+https://www.html5rocks.com/en/tutorials/webcomponents/customelements
+https://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/
+[Can I use shadow dom](https://caniuse.com/#search=shadow)

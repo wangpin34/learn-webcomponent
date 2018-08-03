@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="application-name" content="snow white">
+<meta name="generator" content="wang pin">
+<meta name="description" content="Free Web tutorials">
+<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+<meta name="author" content="wang pin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--HTML4 charset def-->
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!--HTML5 charset def-->
+<meta charset="UTF-8">
+<link rel="icon" href="/assets/icon.ico" type="image/x-icon">
+<title>Template</title>
+<style>
+ body {
+  margin: 0; /* Remove default margin */
+ }
+</style>
+</head>
+<body>
+  <div id="nameTag">Bob</div>
+  <template id="nameTagTemplate">
+    <style>
+      .outer {
+        border: 2px solid brown;
+        border-radius: 1em;
+        background: red;
+        font-size: 20pt;
+        width: 12em;
+        height: 7em;
+        text-align: center;
+      }
+      .boilerplate {
+        color: white;
+        font-family: sans-serif;
+        padding: 0.5em;
+      }
+      .name {
+        color: black;
+        background: white;
+        font-family: "Marker Felt", cursive;
+        font-size: 45pt;
+        padding-top: 0.2em;
+      }
+    </style>
+    <div class="outer">
+      <div class="boilerplate">
+        Hi! My name is
+      </div>
+      <div class="name">
+        Bob
+      </div>
+    </div>
+  </template>
+</body>
+<script type="text/javascript">
+  var shadow = document.querySelector('#nameTag').createShadowRoot();
+  var template = document.querySelector('#nameTagTemplate');
+  var clone = document.importNode(template.content, true);
+  shadow.appendChild(clone);
+</script>
+</html>
